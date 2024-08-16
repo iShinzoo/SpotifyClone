@@ -14,7 +14,9 @@ data class Dimens(
     val large: Dp = 0.dp,
     val buttonHeight: Dp = 50.dp,
     val logoSize: Dp = 42.dp,
-    val isCompanctMedian : Boolean = false
+    val isCompactMedian : Boolean = false,
+    val isExpanded: Boolean = false,
+    val isMedium: Boolean = false
 )
 
 val CompactSmallDimens = Dimens(
@@ -27,7 +29,9 @@ val CompactSmallDimens = Dimens(
     large = 45.dp,
     buttonHeight = 30.dp,
     logoSize = 36.dp,
-    isCompanctMedian = true
+    isCompactMedian = true,
+    isExpanded = false,
+    isMedium = false
 )
 
 val CompactMediumDimens = Dimens(
@@ -40,7 +44,9 @@ val CompactMediumDimens = Dimens(
     large = 65.dp,
     buttonHeight = 48.dp,
     logoSize = 48.dp,
-    isCompanctMedian = true
+    isCompactMedian = true,
+    isExpanded = false,
+    isMedium = false
 )
 
 val CompactDimens = Dimens(
@@ -53,7 +59,9 @@ val CompactDimens = Dimens(
     large = 80.dp,
     buttonHeight = 50.dp,
     logoSize = 55.dp,
-    isCompanctMedian = false
+    isCompactMedian = false,
+    isExpanded = false,
+    isMedium = false
 )
 
 val MediumDimens = Dimens(
@@ -66,7 +74,9 @@ val MediumDimens = Dimens(
     large = 110.dp,
     logoSize = 55.dp,
     buttonHeight = 50.dp,
-    isCompanctMedian = false
+    isCompactMedian = false,
+    isExpanded = false,
+    isMedium = true
 )
 
 val ExpandedDimens = Dimens(
@@ -79,5 +89,6 @@ val ExpandedDimens = Dimens(
     large = 130.dp,
     logoSize = 72.dp,
     buttonHeight = 60.dp,
-    isCompanctMedian = false
+    isCompactMedian = false,
+    isExpanded = true,
 )

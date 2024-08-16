@@ -72,7 +72,7 @@ fun SpotifyTheme(
     var typography = CompactTypography
     var appDimens = CompactDimens
 
-    when(windowSizeClass.widthSizeClass){
+    when(windowSizeClass.widthSizeClass) {
         WindowWidthSizeClass.Compact -> {
             when (windowSizeClass.heightSizeClass) {
                 WindowHeightSizeClass.Compact -> {
@@ -90,11 +90,13 @@ fun SpotifyTheme(
                         typography = CompactTypography
                     }
                 }
+
                 WindowHeightSizeClass.Medium -> {
                     println("9911_CompactMediumDimens")
                     appDimens = CompactMediumDimens
                     typography = CompactMediumTypography
                 }
+
                 else -> {
                     println("9911_CompactDimens")
                     appDimens = CompactDimens
@@ -102,6 +104,7 @@ fun SpotifyTheme(
                 }
             }
         }
+
         WindowWidthSizeClass.Medium -> {
             println("9911_MediumDimens")
             appDimens = MediumDimens
@@ -109,9 +112,25 @@ fun SpotifyTheme(
         }
 
         else -> {
-            println("9911_ExpandedDimens")
-            appDimens = ExpandedDimens
-            typography = ExpandedTypography
+            when (windowSizeClass.heightSizeClass) {
+                WindowHeightSizeClass.Compact -> {
+                    println("9911_CompactDimens")
+                    appDimens = CompactDimens
+                    typography = CompactTypography
+                }
+
+                WindowHeightSizeClass.Medium -> {
+                    println("9911_CompactMediumDimens")
+                    appDimens = ExpandedDimens
+                    typography = CompactMediumTypography
+                }
+
+                else -> {
+                    println("9911_ExpandedDimens")
+                    appDimens = ExpandedDimens
+                    typography = ExpandedTypography
+                }
+            }
         }
     }
 

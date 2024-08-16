@@ -6,6 +6,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import com.example.spotify.diffscreensize.CompactDimens
 import com.example.spotify.diffscreensize.Dimens
 
@@ -26,3 +27,7 @@ fun AppUtils(
 val LocalAppDimens = compositionLocalOf {
     CompactDimens
 }
+
+val ScreenOrientation
+@Composable
+get() = LocalConfiguration.current.orientation

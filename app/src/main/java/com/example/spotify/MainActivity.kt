@@ -18,11 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
 import com.example.spotify.diffscreensize.CompactDimens
 import com.example.spotify.diffscreensize.CompactMediumDimens
 import com.example.spotify.diffscreensize.CompactSmallDimens
 import com.example.spotify.diffscreensize.ExpandedDimens
 import com.example.spotify.diffscreensize.MediumDimens
+import com.example.spotify.navigation.Navigation
 import com.example.spotify.screen.SignUpPage
 import com.example.spotify.ui.theme.AppUtils
 import com.example.spotify.ui.theme.CompactMediumTypography
@@ -50,7 +52,8 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             SpotifyTheme {
-                    SignUpPage()
+                val navController = rememberNavController()
+                Navigation(navController)
                 }
             }
         }
