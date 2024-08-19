@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DIALOG" />
-        <DropdownSelection timestamp="2024-08-14T13:19:44.506085100Z">
+        <DropdownSelection timestamp="2024-08-18T18:56:37.520729600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\as351\.android\avd\Pixel_8_Pro_API_34.avd" />
@@ -15,7 +15,7 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="PhysicalDevice" identifier="serial=7ecdcc46" />
+                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\as351\.android\avd\Medium_Phone_API_VanillaIceCream.avd" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">
@@ -26,11 +26,6 @@
             <Target type="DEFAULT_BOOT">
               <handle>
                 <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\as351\.android\avd\Pixel_Tablet_API_34.avd" />
-              </handle>
-            </Target>
-            <Target type="DEFAULT_BOOT">
-              <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\as351\.android\avd\Medium_Phone_API_VanillaIceCream.avd" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">

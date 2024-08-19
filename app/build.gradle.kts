@@ -57,6 +57,7 @@ android {
     }
 
 
+
 }
 
 dependencies {
@@ -115,6 +116,12 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.compose)
 
+//    //Date Picker
+//    implementation(libs.kmp.date.time.picker)
+
+    //Date picker
+    implementation ("com.github.commandiron:WheelPickerCompose:1.1.11")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.32.0")
 
 }
 

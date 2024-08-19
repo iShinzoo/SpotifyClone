@@ -118,7 +118,9 @@ fun LandscapeLoginScreen(navController: NavController) {
                         .padding(5.dp)
                         .fillMaxWidth(1f)
                         .size(MaterialTheme.dimens.buttonHeight),
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        navController.navigate("clicksignup")
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color(0xFF1DB954),
                     ),
@@ -327,7 +329,9 @@ private fun PortraitLoginScreen(navController: NavController) {
                         .padding(5.dp)
                         .fillMaxWidth(0.9f)
                         .size(MaterialTheme.dimens.buttonHeight),
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        navController.navigate("clicksignup")
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color(0xFF1DB954),
                     ),
