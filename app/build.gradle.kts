@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.gms.google.services)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+
 
 }
 
@@ -43,7 +46,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "2.0.0"
     }
     packaging {
         resources {
@@ -70,6 +73,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -98,6 +104,7 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //Glide
     implementation( libs.glide)
@@ -108,13 +115,19 @@ dependencies {
     implementation(libs.androidx.media3.ui)
 
     //Retrofit
-    implementation(libs.retrofit)
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
 
+    //OkHttp
+    implementation(libs.okhttp)
+    
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
     //Navigation
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+
 
 //    //Date Picker
 //    implementation(libs.kmp.date.time.picker)
@@ -122,6 +135,17 @@ dependencies {
     //Date picker
     implementation ("com.github.commandiron:WheelPickerCompose:1.1.11")
     implementation("com.google.accompanist:accompanist-flowlayout:0.32.0")
+
+    // define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
 
 }
 

@@ -1,5 +1,6 @@
 package com.example.spotify.screen
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -40,6 +41,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -49,8 +51,7 @@ import com.example.spotify.ViewModel.MyViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Password(navController: NavController) {
-    val viewmodel = viewModel<MyViewModel>()
+fun Password(navController: NavController,viewModel: MyViewModel) {
     var isVisible by rememberSaveable { mutableStateOf(false) }
     val currentRoute by navController.currentBackStackEntryAsState()
     Scaffold(
@@ -91,9 +92,9 @@ fun Password(navController: NavController) {
             Spacer(modifier = Modifier.height(36.dp))
             Text("Create a password", color = Color.White, style = MaterialTheme.typography.headlineLarge, modifier = Modifier.padding(8.dp))
             TextField(
-                value = viewmodel.password,
+                value = viewModel.password,
                 onValueChange = {
-                    viewmodel.password = it
+                    viewModel.password = it
                 },
                 modifier = Modifier.fillMaxWidth().padding(8.dp),
                 colors = TextFieldDefaults
@@ -142,6 +143,7 @@ fun Password(navController: NavController) {
 
             Button(modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp).size(121.dp, 60.dp),
                 onClick = {
+                    Log.d("ClickSignup", "Email: ${viewModel.email}, Password: ${viewModel.password}") // Add this line
                     navController.navigate("datepicker")
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -150,7 +152,7 @@ fun Password(navController: NavController) {
                     disabledContainerColor = Color(0xFF5a5a5a),
                     disabledContentColor = Color(0xFF414141),
                 ),
-                enabled = if(viewmodel.password.length >= 8){
+                enabled = if(viewModel.password.length >= 8){
                     true
                 } else {
                     false

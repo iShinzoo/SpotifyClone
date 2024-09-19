@@ -1,5 +1,6 @@
 package com.example.spotify.screen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,22 +26,43 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.spotify.ViewModel.AuthState
+import com.example.spotify.ViewModel.AuthViewModel
 import com.example.spotify.ViewModel.MyViewModel
 import com.example.spotify.dataclass.User
+import dagger.hilt.android.AndroidEntryPoint
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NameCreateAcc(navController: NavController) {
-    val viewModel = viewModel<MyViewModel>()
+fun NameCreateAcc(navController: NavController,authViewModel: AuthViewModel,viewModel: MyViewModel) {
+    val authState = authViewModel.authState.observeAsState()
     val currentRoute by navController.currentBackStackEntryAsState()
+
+    LaunchedEffect(authState.value) { // Use authState.value here
+        Log.d("AuthState", "Auth state changed: ${authState.value}")
+        if (authState.value is AuthState.Authenticated) {
+            navController.navigate("langSelection"){
+                popUpTo("nameCreateAcc"){
+                    inclusive = true
+                }
+            }
+        }else if (authState.value is AuthState.Error) {
+            val errorMessage = (authState.value as AuthState.Error).message
+            // Handle the error message, e.g., show a toast or snackbar
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -101,15 +123,10 @@ fun NameCreateAcc(navController: NavController) {
 
             Button(modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp).size(221.dp, 60.dp),
                 onClick = {
-                    viewModel.dob?.let { it1 ->
-                        User(
-                            name = viewModel.name,
-                            email = viewModel.email,
-                            password = viewModel.password,
-                            dob = it1,
-                        )
-                    }
-                },
+                        authViewModel.signup(viewModel)
+                    Log.d("ClickSignup", "Email: ${viewModel.email}, Password: ${viewModel.password}") // Add this line
+                    },
+
                 colors = ButtonDefaults.buttonColors(
                     Color(0xFFFFFFFF),
                     contentColor = Color.Black,

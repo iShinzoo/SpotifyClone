@@ -61,8 +61,8 @@ fun MyButton(
     Button(
         onClick = {
             viewModel.gender = state.text
-            viewModel.selectedButtonIndices.clear()
-            viewModel.selectedButtonIndices.add(index)
+            viewModel.updateSelectedButtonIndex(index)
+            onButtonClicked(index)
             onButtonClicked(index)
         },
         colors = ButtonDefaults.buttonColors(
@@ -91,7 +91,7 @@ fun MyButton(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun Gender(navController: NavController) {
-    val viewModel = viewModel<MyViewModel>()
+    val viewModel: MyViewModel = viewModel()
     val currentRoute by navController.currentBackStackEntryAsState()
     Scaffold(
         topBar = {
@@ -168,8 +168,7 @@ fun Gender(navController: NavController) {
                 buttonStates.forEachIndexed { index, button ->
                     MyButton(
                         onButtonClicked = {
-                            viewModel.selectedButtonIndices.clear()
-                            viewModel.selectedButtonIndices.add(index)
+                            viewModel.updateSelectedButtonIndex(index)
                             navController.navigate("namecreateacc")
                         },
                         index = index,

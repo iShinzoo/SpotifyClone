@@ -47,6 +47,7 @@ import com.commandiron.wheel_picker_compose.WheelDatePicker
 import com.commandiron.wheel_picker_compose.WheelDateTimePicker
 import com.commandiron.wheel_picker_compose.core.TimeFormat
 import com.commandiron.wheel_picker_compose.core.WheelPickerDefaults
+import com.example.spotify.ViewModel.MyViewModel
 import com.example.spotify.ui.theme.dimens
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -55,7 +56,7 @@ import java.time.format.DateTimeFormatter
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DatePicker(navController: NavController) {
+fun DatePicker(navController: NavController,viewModel: MyViewModel) {
     MaterialTheme {
         var showDatePicker by rememberSaveable { mutableStateOf(true) }
         var selectedDob by rememberSaveable { mutableStateOf<LocalDate?>(null) }
